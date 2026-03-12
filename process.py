@@ -469,13 +469,13 @@ def getSNR(Y,f, RangeFreq, fs=41, w=8,h=3):
 
     SNR=10*np.log10(sum(U*Y**2)/sum((1-U)*Y**2))
     import matplotlib.pyplot as plt
-    plt.figure()
-    plt.plot(f[1:np.where(f*60>=800)[0][0]]*60,Y/np.max(Y))
-    plt.xlabel('Frequency (BPM)')
-    plt.ylabel('Normalized Spectrum amplitude')
-    #plt.plot(f[1:np.where(f*60>=800)[0][0]]*60,U)
-    plt.title('{}'.format(SNR))
-    plt.show()
+    # plt.figure()
+    # plt.plot(f[1:np.where(f*60>=800)[0][0]]*60,Y/np.max(Y))
+    # plt.xlabel('Frequency (BPM)')
+    # plt.ylabel('Normalized Spectrum amplitude')
+    # #plt.plot(f[1:np.where(f*60>=800)[0][0]]*60,U)
+    # plt.title('{}'.format(SNR))
+    # plt.show()
     return SNR
 
 def get_milliNP(x, fs=40, Filter=True, SPG= False,Yref=[], f=[]):
@@ -696,8 +696,8 @@ def getFiducialPoints(beatsCollection, fs=40, inv=True):
         # Dia.append(beats[peaksloc[1]])
         # DiaLoc.append(peaksloc[1])
         peaksloc=scipy.signal.find_peaks(beast2d)[0][:2]
-        dloc=peaksloc[0]
-        # dloc=peaksloc[0]+np.argmin(beats[peaksloc[0]:peaksloc[1]])
+        #dloc=peaksloc[0]
+        dloc=peaksloc[0]+np.argmin(beats[peaksloc[0]:peaksloc[1]])
         Dic.append(beats[dloc])
         DicLoc.append(dloc)
     return Sys,Dia,Dic,SysLoc,DiaLoc,DicLoc
